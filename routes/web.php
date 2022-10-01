@@ -31,6 +31,13 @@ Route::group(['middleware'=>'admin_auth'],function ()
 {
     Route::get('admin/dashboard',[AdminController::class,'dashboard']);
     Route::get('admin/category',[CategoryController::class,'index']);
+    Route::get('admin/manage_category',[CategoryController::class,'create']);
+    Route::get('admin/logout', function () {
+        session()->forget('ADMIN_LOGIN');
+        session()->forget('ADMIN_ID');
+        session()->flash('error','Logout successfully');
+        return redirect('admin');
+    });
 });
 
 
