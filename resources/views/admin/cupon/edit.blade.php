@@ -1,8 +1,8 @@
 @extends('admin/layout')
 
 @section('container')
-    <h3 align='center'>Add Category</h3>
-    <a href="category">
+    <h3 align='center'>Edit Cupon</h3>
+    <a href="cupon">
         <button type="button" class="btn btn-success">Back</button>
     </a>
     <div class="row m-t-30">
@@ -16,31 +16,27 @@
                 @endif
                     <div class="card-body">
                         <div class="card-title">
-                            <h3 class="text-center title-2">Category</h3>
+                            <h3 class="text-center title-2">Edit Cupon</h3>
                         </div>
                         <hr>
-                        <form action="{{ route('category_insert') }}" method="post">
+                        <form action="{{url('admin/cupon/update',$cupon->id)}}" method="post" novalidate="novalidate">
                             @csrf
                             <div class="form-group">
-                                <label class="control-label mb-1">Category Name</label>
-                                <input id="category_name" name="category_name" type="text" class="form-control" required>
-                                @if ($errors->has('category_name'))
-                                        <div class="alert alert-danger">{{$errors->first('category_name')}}</div>
-                                @endif
+                                <label class="control-label mb-1">Title</label>
+                                <input id="title" name="title" type="text" class="form-control" value="{{$cupon->title}}">
                             </div>
                             <div class="form-group">
-                                <label class="control-label mb-1">Category Code</label>
-                                <input id="category_slug" name="category_slug" type="text" class="form-control" required>
-                                @error('category_slug')
-                                <div class="alert alert-success">
-                                {{ $message }}
-                                </div>
-                                @enderror
+                                <label class="control-label mb-1">Code</label>
+                                <input id="code" name="code" type="text" class="form-control" value="{{$cupon->code}}">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label mb-1">Value</label>
+                                <input id="value" name="value" type="text" class="form-control" value="{{$cupon->value}}">
                             </div>
                            
                             <div>
                                 <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
-                                    <span id="payment-button-amount">Save</span>
+                                    <span id="payment-button-amount">Update</span>
                                     <span id="payment-button-sending" style="display:none;">Sending…</span>
                                 </button>
                             </div>

@@ -67,8 +67,27 @@
                             <a href="dashboard"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="category"><i class="fas fa-tachometer-alt"></i>Category</a>
+                            <a href="category"><i class="fas fa-list"></i>Category</a>
                         </li>
+                        <li>
+                            <a href="cupon"><i class="fas fa-tag"></i>Cupon</a>
+                        </li>
+                        <li>
+                            <a href="size"><i class="fas fa-window-maximize"></i>Size</a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-tachometer-alt"></i>Product</a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li>
+                                    <a href="product">Add</a>
+                                </li>
+                                <li>
+                                    <a href="view">View</a>
+                                </li>
+                            </ul>
+                        </li>
+                      
                     </ul>
                 </nav>
             </div>
