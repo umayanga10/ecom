@@ -86,38 +86,54 @@ class ProductController extends Controller
    
     public function view(Product $product)
     {
+        $product = Product::get();
+        $category = Category::get();
+        return view('admin.product.view',compact('product','category'));
+    }
+
+    public function load_table(Request $request)
+    {
+        // dd($request->all());
+        $products = DB::table('products AS p')
+                        ->join('categories AS c', 'c.id', 'p.category_id')
+                        ->select([
+                                'c.id',
+                                'p.id as pro_id',
+                                'p.name',
+                                'c.category_name',
+                                'p.slug',
+                                'p.brand',
+                                'p.model',
+                                'p.keywords',
+                                'p.warranty',
+                                'p.status',
+                                'p.uses',
+                            ]);
+                           
+           
+
+            $products = $products->get();
+            // dd($products);
+            return view('admin.product.loadData', compact('products'));
+
+    }
+
+    public function export(Request $request)
+    {
+       dd("hit");
+    }
+  
+    public function edit(Product $product)
+    {
         
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, Product $product)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Product $product)
     {
         //

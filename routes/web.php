@@ -68,6 +68,8 @@ Route::group(['middleware'=>'admin_auth'],function ()
      Route::get('admin/product',[ProductController::class,'index'])->name('product');
      Route::post('admin/add_product',[ProductController::class,'store']);
      Route::get('admin/view',[ProductController::class,'view']);
+     Route::post('admin/search',[ProductController::class, 'load_table']);
+     Route::get('admin/export',[ProductController::class, 'export']);
 
     // Log out
     Route::get('admin/logout', function () {
